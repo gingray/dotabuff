@@ -12,7 +12,8 @@ module Dotabuff
         hero_list.each do |item|
           name = item.xpath('./td[1]').first.attributes['data-value'].value
           win_score = item.xpath('./td[3]').first.attributes['data-value'].value
-          hero = { name: name, win_score: win_score }
+          win_rate = item.xpath('./td[4]').first.attributes['data-value'].value
+          hero = { name: name, win_score: win_score, win_rate: win_rate }
           stat << hero
         end
         hash[:stat] = stat
