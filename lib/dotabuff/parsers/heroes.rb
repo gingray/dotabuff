@@ -16,9 +16,11 @@ module Dotabuff
           end
 
           path = item.attributes['href'].value
+          main_url = URI.join(Dotabuff::MAIN_URL, path).to_s
           {
             name: name,
-            main_url: URI.join(Dotabuff::MAIN_URL, path).to_s,
+            main_url: main_url,
+            pick_url: URI.join("#{main_url}/", Dotabuff::PICK_URL),
             win_rate: win_rate
           }
         end
